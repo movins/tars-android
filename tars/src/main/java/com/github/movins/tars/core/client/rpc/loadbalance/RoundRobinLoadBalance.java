@@ -41,7 +41,6 @@ import java.util.logging.Logger;
 public class RoundRobinLoadBalance<T> implements LoadBalance<T> {
     private static final Logger logger = LoggerFactory.getClientLogger();
 
-
     private final AtomicInteger sequence = new AtomicInteger();
     private final AtomicInteger staticWeightSequence = new AtomicInteger();
     private final ServantProxyConfig config;
