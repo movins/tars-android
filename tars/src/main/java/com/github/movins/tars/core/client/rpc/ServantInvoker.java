@@ -17,14 +17,15 @@
 package com.github.movins.tars.core.client.rpc;
 
 import com.github.movins.tars.api.client.ServantProxyConfig;
-import com.github.movins.tars.core.rpc.common.InvokeContext;
+import com.github.movins.tars.api.client.rpc.RPCClient;
 import com.github.movins.tars.api.rpc.common.Url;
-import com.github.movins.tars.core.rpc.common.support.AbstractInvoker;
 import com.github.movins.tars.api.support.log.LoggerFactory;
-import org.slf4j.Logger;
+import com.github.movins.tars.core.rpc.common.InvokeContext;
+import com.github.movins.tars.core.rpc.common.support.AbstractInvoker;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.logging.Logger;
 
 public abstract class ServantInvoker<T> extends AbstractInvoker<T> {
     private static final Logger logger = LoggerFactory.getClientLogger();
@@ -65,7 +66,7 @@ public abstract class ServantInvoker<T> extends AbstractInvoker<T> {
                     client.close();
                     logger.info("closed client " + client);
                 } catch (Throwable t) {
-                    logger.error("error in close " + client, t);
+//                    logger.error("error in close " + client, t);
                 }
             }
         } finally {

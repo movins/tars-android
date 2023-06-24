@@ -16,7 +16,8 @@
 
 package com.github.movins.tars.api.common.support;
 
-import javax.annotation.concurrent.Immutable;
+import androidx.compose.runtime.Immutable;
+
 import java.util.Objects;
 
 @Immutable

@@ -1,7 +1,6 @@
 package com.github.movins.tars.api.common.logger;
 
-
-import org.slf4j.event.Level;
+import java.util.logging.Level;
 
 public interface LoggerFactory {
 

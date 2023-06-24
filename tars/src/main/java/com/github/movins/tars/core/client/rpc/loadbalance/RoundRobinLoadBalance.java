@@ -18,22 +18,22 @@
 package com.github.movins.tars.core.client.rpc.loadbalance;
 
 import com.github.movins.tars.api.client.ServantProxyConfig;
+import com.github.movins.tars.api.common.util.CollectionUtils;
+import com.github.movins.tars.api.support.log.LoggerFactory;
 import com.github.movins.tars.core.client.cluster.ServantInvokerAliveChecker;
 import com.github.movins.tars.core.client.cluster.ServantInvokerAliveStat;
 import com.github.movins.tars.core.client.rpc.InvokerComparator;
-import com.github.movins.tars.api.common.util.CollectionUtils;
 import com.github.movins.tars.core.rpc.common.InvokeContext;
 import com.github.movins.tars.core.rpc.common.Invoker;
 import com.github.movins.tars.core.rpc.common.LoadBalance;
 import com.github.movins.tars.core.rpc.common.exc.NoInvokerException;
-import com.github.movins.tars.api.support.log.LoggerFactory;
-import org.slf4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Logger;
 
 /**
  * Load balancer strategy
@@ -109,7 +109,7 @@ public class RoundRobinLoadBalance<T> implements LoadBalance<T> {
 
     @Override
     public void refresh(Collection<Invoker<T>> invokers) {
-        logger.info("{} try to refresh RoundRobinLoadBalance's invoker cache, size= {} ", config.getSimpleObjectName(), CollectionUtils.isEmpty(invokers) ? 0 : invokers.size());
+//        logger.info("{} try to refresh RoundRobinLoadBalance's invoker cache, size= {} ", config.getSimpleObjectName(), CollectionUtils.isEmpty(invokers) ? 0 : invokers.size());
         if (CollectionUtils.isEmpty(invokers)) {
             sortedInvokersCache = null;
             staticWeightInvokersCache = null;
@@ -119,11 +119,11 @@ public class RoundRobinLoadBalance<T> implements LoadBalance<T> {
         Collections.sort(sortedInvokersTmp, comparator);
         sortedInvokersCache = sortedInvokersTmp;
         staticWeightInvokersCache = LoadBalanceHelper.buildStaticWeightList(sortedInvokersTmp, config);
-        logger.info("{} refresh RoundRobinLoadBalance's invoker cache done, staticWeightInvokersCache size= {}, sortedInvokersCache size={}",
-                config.getSimpleObjectName(),
-                (staticWeightInvokersCache == null || staticWeightInvokersCache.isEmpty() ? 0 : staticWeightInvokersCache.size()),
-                (sortedInvokersCache == null || sortedInvokersCache.isEmpty() ? 0 : sortedInvokersCache.size()))
-        ;
+//        logger.info("{} refresh RoundRobinLoadBalance's invoker cache done, staticWeightInvokersCache size= {}, sortedInvokersCache size={}",
+//                config.getSimpleObjectName(),
+//                (staticWeightInvokersCache == null || staticWeightInvokersCache.isEmpty() ? 0 : staticWeightInvokersCache.size()),
+//                (sortedInvokersCache == null || sortedInvokersCache.isEmpty() ? 0 : sortedInvokersCache.size()))
+//        ;
     }
 
 }

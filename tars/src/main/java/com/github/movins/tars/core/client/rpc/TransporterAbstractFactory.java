@@ -1,11 +1,12 @@
 package com.github.movins.tars.core.client.rpc;
 
-import com.google.common.collect.ImmutableList;
+import com.github.movins.tars.api.client.rpc.TransporterFactory;
 import com.github.movins.tars.api.support.log.LoggerFactory;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
 
 import java.util.List;
 import java.util.ServiceLoader;
+import java.util.logging.Logger;
 
 /**
  * Abstract factory for transporter.
@@ -27,7 +28,7 @@ public class TransporterAbstractFactory {
         }
         defaultTransporterFactory = transporterFactoryList.get(0);
         if (transporterFactoryList.size() > 1) {
-            log.warn("More than one transporter factory found. {} will be used.", defaultTransporterFactory.getClass().getCanonicalName());
+//            log.warn("More than one transporter factory found. {} will be used.", defaultTransporterFactory.getClass().getCanonicalName());
         }
     }
 

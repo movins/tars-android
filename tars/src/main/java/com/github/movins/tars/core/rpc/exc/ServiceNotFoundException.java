@@ -15,6 +15,8 @@
  */
 package com.github.movins.tars.core.rpc.exc;
 
+import com.github.movins.tars.api.rpc.exc.TarsException;
+
 public class ServiceNotFoundException extends TarsException {
 
     private static final long serialVersionUID = 7206643109167131022L;

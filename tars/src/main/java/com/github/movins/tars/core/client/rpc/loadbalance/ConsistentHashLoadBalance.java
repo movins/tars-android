@@ -17,24 +17,24 @@
 package com.github.movins.tars.core.client.rpc.loadbalance;
 
 import com.github.movins.tars.api.client.ServantProxyConfig;
-import com.github.movins.tars.core.client.cluster.ServantInvokerAliveChecker;
-import com.github.movins.tars.core.client.cluster.ServantInvokerAliveStat;
-import com.github.movins.tars.core.client.rpc.InvokerComparator;
 import com.github.movins.tars.api.common.util.CollectionUtils;
 import com.github.movins.tars.api.common.util.Constants;
 import com.github.movins.tars.api.common.util.StringUtils;
+import com.github.movins.tars.api.support.log.LoggerFactory;
+import com.github.movins.tars.core.client.cluster.ServantInvokerAliveChecker;
+import com.github.movins.tars.core.client.cluster.ServantInvokerAliveStat;
+import com.github.movins.tars.core.client.rpc.InvokerComparator;
 import com.github.movins.tars.core.rpc.common.InvokeContext;
 import com.github.movins.tars.core.rpc.common.Invoker;
 import com.github.movins.tars.core.rpc.common.LoadBalance;
 import com.github.movins.tars.core.rpc.common.exc.NoInvokerException;
-import com.github.movins.tars.api.support.log.LoggerFactory;
-import org.slf4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import java.util.logging.Logger;
 
 public class ConsistentHashLoadBalance<T> implements LoadBalance<T> {
     private static final Logger logger = LoggerFactory.getClientLogger();
@@ -79,9 +79,9 @@ public class ConsistentHashLoadBalance<T> implements LoadBalance<T> {
             }
         }
 
-        if (logger.isDebugEnabled()) {
-            logger.debug(config.getSimpleObjectName() + " can't find active invoker using consistent hash loadbalance. try to use normal hash");
-        }
+//        if (logger.isDebugEnabled()) {
+//            logger.debug(config.getSimpleObjectName() + " can't find active invoker using consistent hash loadbalance. try to use normal hash");
+//        }
 
         //use normal hash
         List<Invoker<T>> sortedInvokers = sortedInvokersCache;

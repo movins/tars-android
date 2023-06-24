@@ -18,12 +18,10 @@
 package com.github.movins.tars.core.client;
 
 import com.github.movins.tars.api.client.util.ParseTools;
-
-import javax.annotation.concurrent.ThreadSafe;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import com.github.movins.tars.api.client.CommunicatorConfig;
 
-@ThreadSafe
 public final class CommunicatorFactory {
 
     private final static CommunicatorFactory instance = new CommunicatorFactory();

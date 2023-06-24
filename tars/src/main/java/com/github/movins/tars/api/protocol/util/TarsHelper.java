@@ -16,9 +16,7 @@
 
 package com.github.movins.tars.api.protocol.util;
 
-import com.google.common.collect.ImmutableMap;
 import com.github.movins.tars.api.common.support.Holder;
-import com.github.movins.tars.api.common.util.BeanAccessor;
 import com.github.movins.tars.api.common.util.CommonUtils;
 import com.github.movins.tars.api.common.util.Constants;
 import com.github.movins.tars.api.protocol.annotation.Servant;
@@ -34,7 +32,7 @@ import com.github.movins.tars.api.protocol.tars.support.TarsMethodInfo;
 import com.github.movins.tars.api.protocol.tars.support.TarsMethodParameterInfo;
 import com.github.movins.tars.api.protocol.tars.support.TarsStructInfo;
 import com.github.movins.tars.api.protocol.tars.support.TarsStrutPropertyInfo;
-import sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl;
+import com.google.common.collect.ImmutableMap;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Array;
@@ -394,7 +392,7 @@ public class TarsHelper {
                             propertyInfo.setRequire(propertyAnnotation.isRequire());
                             propertyInfo.setComment(propertyAnnotation.comment());
 
-                            propertyInfo.setDefaultValue(getPropertyDefaultValue(BeanAccessor.getBeanValue(bean, field.getName())));
+//                            propertyInfo.setDefaultValue(getPropertyDefaultValue(BeanAccessor.getBeanValue(bean, field.getName())));
 
                             propertyList.add(propertyInfo);
                         }
@@ -477,7 +475,7 @@ public class TarsHelper {
         Type returnOriginType = method.getReturnType();
 
         if (returnOriginType == CompletableFuture.class) {
-            ParameterizedTypeImpl parameterizedType = (ParameterizedTypeImpl) method.getGenericReturnType();
+            ParameterizedType parameterizedType = (ParameterizedType) returnType;
             TarsMethodParameterInfo returnInfo = new TarsMethodParameterInfo();
             returnInfo.setStamp(TarsHelper.getParameterStamp(parameterizedType.getActualTypeArguments()[0]));//CompletableFuture use  gengeric  inner type class
             returnInfo.setName("result");
@@ -679,12 +677,10 @@ public class TarsHelper {
     }
 
     public static void setHolderValue(Object holder, Object value) throws Exception {
-        BeanAccessor.setBeanValue(holder, "value", value);
+        // BeanAccessor.setBeanValue(holder, "value", value);
     }
 
     public static Object getHolderValue(Object holder) throws Exception {
-        return BeanAccessor.getBeanValue(holder, "value");
+        return null; //BeanAccessor.getBeanValue(holder, "value");
     }
-
-
 }

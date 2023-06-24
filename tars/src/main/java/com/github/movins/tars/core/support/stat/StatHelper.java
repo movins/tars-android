@@ -16,17 +16,17 @@
 
 package com.github.movins.tars.core.support.stat;
 
-import com.github.movins.tars.core.client.Communicator;
 import com.github.movins.tars.api.common.util.StringUtils;
 import com.github.movins.tars.api.support.log.LoggerFactory;
+import com.github.movins.tars.core.client.Communicator;
 import com.github.movins.tars.core.support.stat.prx.StatFPrx;
 import com.github.movins.tars.core.support.stat.prx.StatMicMsgBody;
 import com.github.movins.tars.core.support.stat.prx.StatMicMsgHead;
-import org.slf4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Logger;
 
 public final class StatHelper {
     private static final Logger logger = LoggerFactory.getClientLogger();
@@ -84,7 +84,7 @@ public final class StatHelper {
                     try {
                         statFProxy.promise_reportMicMsg(reportMap, bFromClient);
                     } catch (Exception e) {
-                        logger.error("error occurred on report proxy stat", e);
+//                        logger.error("error occurred on report proxy stat", e);
                         ++errorCount;
                     }
                     reportMap = new HashMap<>();
@@ -96,11 +96,11 @@ public final class StatHelper {
                     successCount++;
                 } catch (Exception e) {
                     errorCount++;
-                    logger.error("error occurred on report proxy stat", e);
+//                    logger.error("error occurred on report proxy stat", e);
                 }
             }
         } catch (Exception e) {
-            logger.error("error occurred on report proxy stat", e);
+//            logger.error("error occurred on report proxy stat", e);
         } finally {
             logger.info("report success:" + successCount + " fail:" + errorCount + " costTime:" + (System.currentTimeMillis() - start));
         }

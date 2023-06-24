@@ -17,8 +17,9 @@
 package com.github.movins.tars.api.support.log;
 
 import com.github.movins.tars.api.common.logger.LoggerFactoryManager;
-import org.slf4j.Logger;
-import org.slf4j.event.Level;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LoggerFactory {
     private static final String CLIENT_LOG_NAME = "TARS_CLIENT_LOGGER";
@@ -31,28 +32,28 @@ public class LoggerFactory {
     }
 
     public static void resetLogLevel(Level level) {
-        LoggerFactoryManager.getInstance().getHandler().setLoggerLevel(Logger.ROOT_LOGGER_NAME, level);
+        LoggerFactoryManager.getInstance().getHandler().setLoggerLevel(Logger.GLOBAL_LOGGER_NAME, level);
     }
 
     public static Logger getLogger() {
-        return org.slf4j.LoggerFactory.getLogger("");
+        return Logger.getLogger("");
     }
 
 
     public static Logger getLogger(String logName) {
-        return org.slf4j.LoggerFactory.getLogger(logName);
+        return Logger.getLogger(logName);
     }
 
     public static Logger getOmLogger() {
-        return org.slf4j.LoggerFactory.getLogger(OM_LOG_NAME);
+        return Logger.getLogger(OM_LOG_NAME);
     }
 
 
     public static Logger getClientLogger() {
-        return org.slf4j.LoggerFactory.getLogger(CLIENT_LOG_NAME);
+        return Logger.getLogger(CLIENT_LOG_NAME);
     }
 
     public static Logger getTransporterLogger() {
-        return org.slf4j.LoggerFactory.getLogger(TRANSPORTER_LOG_NAME);
+        return Logger.getLogger(TRANSPORTER_LOG_NAME);
     }
 }

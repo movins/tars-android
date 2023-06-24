@@ -21,7 +21,6 @@ import com.github.movins.tars.api.common.ClientVersion;
 import com.github.movins.tars.api.common.util.Constants;
 import com.github.movins.tars.api.common.util.StringUtils;
 import com.github.movins.tars.api.protocol.util.TarsHelper;
-import org.assertj.core.util.Preconditions;
 
 public final class ServantProxyConfig {
 
@@ -110,12 +109,12 @@ public final class ServantProxyConfig {
         this(null, null, objectName);
     }
 
-    ServantProxyConfig(String communicatorId, String locator, String objectName) {
+    public ServantProxyConfig(String communicatorId, String locator, String objectName) {
         this(communicatorId, locator, objectName, ParseTools.hasServerNode(objectName));
     }
 
     private ServantProxyConfig(String communicatorId, String locator, String objectName, boolean directConnection) {
-        Preconditions.checkNotNullOrEmpty(objectName, "objectName");
+//        Preconditions.checkNotNullOrEmpty(objectName, "objectName");
         this.setCommunicatorId(communicatorId);
         this.setLocator(locator);
         this.setObjectName(objectName);
@@ -130,7 +129,7 @@ public final class ServantProxyConfig {
         return communicatorId;
     }
 
-    void setCommunicatorId(String communicatorId) {
+    public void setCommunicatorId(String communicatorId) {
         this.communicatorId = communicatorId;
     }
 
@@ -146,7 +145,7 @@ public final class ServantProxyConfig {
         return locator;
     }
 
-    void setLocator(String locator) {
+    public void setLocator(String locator) {
         this.locator = locator;
     }
 

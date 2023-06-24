@@ -17,19 +17,27 @@
 package com.github.movins.tars.core.client.rpc;
 
 import com.github.movins.tars.api.client.ServantProxyConfig;
+import com.github.movins.tars.api.client.rpc.RPCClient;
 import com.github.movins.tars.api.client.util.ParseTools;
-import com.github.movins.tars.core.common.support.ScheduledExecutorManager;
 import com.github.movins.tars.api.common.util.Constants;
-import com.github.movins.tars.core.rpc.common.Invoker;
-import com.github.movins.tars.core.rpc.common.ProtocolInvoker;
 import com.github.movins.tars.api.rpc.common.Url;
-import com.github.movins.tars.core.rpc.common.util.concurrent.ConcurrentHashSet;
 import com.github.movins.tars.api.rpc.exc.ClientException;
 import com.github.movins.tars.api.support.log.LoggerFactory;
-import org.slf4j.Logger;
+import com.github.movins.tars.core.common.support.ScheduledExecutorManager;
+import com.github.movins.tars.core.rpc.common.Invoker;
+import com.github.movins.tars.core.rpc.common.ProtocolInvoker;
+import com.github.movins.tars.core.rpc.common.util.concurrent.ConcurrentHashSet;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public abstract class ServantProtocolInvoker<T> implements ProtocolInvoker<T> {
@@ -102,13 +110,13 @@ public abstract class ServantProtocolInvoker<T> implements ProtocolInvoker<T> {
             final List<Url> list = ParseTools.parse(servantProxyConfig);
             return createInvokers(list);
         } catch (Throwable t) {
-            logger.error("error occurred on init invoker|" + servantProxyConfig.getObjectName(), t);
+//            logger.error("error occurred on init invoker|" + servantProxyConfig.getObjectName(), t);
         }
         return new ConcurrentHashSet<>();
     }
 
     private void addInvokers(Collection<Url> urls) {
-        logger.info("try to add invokers|url={}", urls.stream().map(Url::toIdentityString).collect(Collectors.toList()));
+//        logger.info("try to add invokers|url={}", urls.stream().map(Url::toIdentityString).collect(Collectors.toList()));
         ConcurrentHashSet<Invoker<T>> invokers = createInvokers(urls);
         if (!invokers.isEmpty()) {
             allInvoker.addAll(invokers);
@@ -121,13 +129,13 @@ public abstract class ServantProtocolInvoker<T> implements ProtocolInvoker<T> {
             try {
                 boolean active = url.getParameter(Constants.TARS_CLIENT_ACTIVE, false);
                 if (active) {
-                    logger.info("try to init invoker|active={} |{}", active, url.toIdentityString());
+//                    logger.info("try to init invoker|active={} |{}", active, url.toIdentityString());
                     invokers.add(create(api, url));
                 } else {
-                    logger.info("inactive invoker can't to init|active={}|{}", active, url.toIdentityString());
+//                    logger.info("inactive invoker can't to init|active={}|{}", active, url.toIdentityString());
                 }
             } catch (Throwable e) {
-                logger.error("error occurred on init invoker|" + url.toIdentityString(), e);
+//                logger.error("error occurred on init invoker|" + url.toIdentityString(), e);
             }
         }
         return invokers;
@@ -141,7 +149,7 @@ public abstract class ServantProtocolInvoker<T> implements ProtocolInvoker<T> {
                     allInvoker.remove(invoker);
                     invoker.destroy();
                 } catch (Throwable t) {
-                    logger.error("error occurred on destroy invoker|" + invoker, t);
+//                    logger.error("error occurred on destroy invoker|" + invoker, t);
                 }
             }
         }

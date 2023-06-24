@@ -17,10 +17,9 @@
 package com.github.movins.tars.core.client.support;
 
 import com.github.movins.tars.api.common.util.Constants;
-import com.github.movins.tars.core.common.util.Loader;
 import com.github.movins.tars.api.common.util.StringUtils;
 import com.github.movins.tars.api.support.log.LoggerFactory;
-import org.slf4j.Logger;
+import com.github.movins.tars.core.common.util.Loader;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -38,6 +37,7 @@ import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.logging.Logger;
 
 public final class ServantCacheManager {
     private static final Logger LOGGER = LoggerFactory.getClientLogger();
@@ -71,7 +71,7 @@ public final class ServantCacheManager {
             props.put(makeKey(CommunicatorId, objName), endpointList);
             saveToLocal(dataPath);
         } catch (Throwable e) {
-            LOGGER.error("", e);
+//            LOGGER.error("", e);
         }
     }
 
@@ -106,9 +106,9 @@ public final class ServantCacheManager {
             }
             out = new BufferedOutputStream(new FileOutputStream(file));
             props.store(out, (new Date()).toString());
-            LOGGER.info("save " + file.getAbsolutePath());
+//            LOGGER.info("save " + file.getAbsolutePath());
         } catch (Exception e) {
-            LOGGER.error("save " + Constants.SERVER_NODE_CACHE_FILENAME + " failed", e);
+//            LOGGER.error("save " + Constants.SERVER_NODE_CACHE_FILENAME + " failed", e);
         } finally {
             if (null != out) {
                 try {
@@ -142,9 +142,9 @@ public final class ServantCacheManager {
                 for (String key : removeKey) {
                     props.remove(key);
                 }
-                LOGGER.info("load  {}", Constants.SERVER_NODE_CACHE_FILENAME);
+//                LOGGER.info("load  {}", Constants.SERVER_NODE_CACHE_FILENAME);
             } catch (Throwable e) {
-                LOGGER.error("read file " + Constants.SERVER_NODE_CACHE_FILENAME + " error.", e);
+//                LOGGER.error("read file " + Constants.SERVER_NODE_CACHE_FILENAME + " error.", e);
             } finally {
                 if (null != in) {
                     try {

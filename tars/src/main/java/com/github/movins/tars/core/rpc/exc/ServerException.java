@@ -17,6 +17,7 @@
 package com.github.movins.tars.core.rpc.exc;
 
 import static com.github.movins.tars.api.protocol.util.TarsHelper.*;
+import com.github.movins.tars.api.rpc.exc.TarsException;
 
 @SuppressWarnings("serial")
 public class ServerException extends TarsException {

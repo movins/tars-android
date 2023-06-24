@@ -25,6 +25,8 @@ import com.github.movins.tars.core.rpc.exc.CommunicatorConfigException;
 import com.github.movins.tars.core.support.query.QueryHelper;
 import com.github.movins.tars.api.support.query.prx.EndpointF;
 import com.github.movins.tars.core.support.stat.StatHelper;
+import com.github.movins.tars.api.client.ServantProxyConfig;
+import com.github.movins.tars.api.client.CommunicatorConfig;
 
 import java.lang.reflect.Proxy;
 import java.util.Iterator;

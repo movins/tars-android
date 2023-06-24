@@ -16,7 +16,6 @@
 
 package com.github.movins.tars.api.protocol.tars;
 
-import com.github.movins.tars.api.common.util.BeanAccessor;
 import com.github.movins.tars.api.common.util.CommonUtils;
 import com.github.movins.tars.api.protocol.tars.exc.TarsEncodeException;
 import com.github.movins.tars.api.protocol.tars.support.TarsStructInfo;
@@ -38,7 +37,7 @@ public class TarsOutputStreamExt {
             for (TarsStrutPropertyInfo propertyInfo : propertyList) {
                 Object value = null;
                 try {
-                    value = BeanAccessor.getBeanValue(e, propertyInfo.getName());
+//                    value = BeanAccessor.getBeanValue(e, propertyInfo.getName());
                 } catch (Exception ex) {
                     throw new TarsEncodeException(ex.getLocalizedMessage());
                 }

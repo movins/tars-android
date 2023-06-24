@@ -16,6 +16,8 @@
 
 package com.github.movins.tars.core.rpc.exc;
 
+import com.github.movins.tars.api.rpc.exc.ClientException;
+
 @SuppressWarnings("serial")
 public class CommunicatorConfigException extends ClientException {
 

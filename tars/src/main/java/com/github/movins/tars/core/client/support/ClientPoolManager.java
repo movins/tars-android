@@ -22,11 +22,11 @@ import com.github.movins.tars.core.common.util.concurrent.TaskQueue;
 import com.github.movins.tars.core.common.util.concurrent.TaskThreadFactory;
 import com.github.movins.tars.core.common.util.concurrent.TaskThreadPoolExecutor;
 import com.github.movins.tars.api.support.log.LoggerFactory;
-import org.slf4j.Logger;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 public class ClientPoolManager {
     private static final Logger logger = LoggerFactory.getClientLogger();
@@ -53,7 +53,7 @@ public class ClientPoolManager {
         int queueSize = communicatorConfig.getQueueSize();
         TaskQueue taskqueue = new TaskQueue(queueSize);
         String namePrefix = "tars-client-executor-";
-        logger.info("create client thread pool, communicator config is {}", communicatorConfig.toString());
+//        logger.info("create client thread pool, communicator config is {}", communicatorConfig.toString());
         TaskThreadPoolExecutor executor = new TaskThreadPoolExecutor(corePoolSize, maxPoolSize, keepAliveTime, TimeUnit.SECONDS, taskqueue, new TaskThreadFactory(namePrefix));
         taskqueue.setParent(executor);
         return executor;

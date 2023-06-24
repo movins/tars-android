@@ -31,13 +31,15 @@ import com.github.movins.tars.api.rpc.exc.ClientException;
 import com.github.movins.tars.core.rpc.exc.NoConnectionException;
 import com.github.movins.tars.api.support.log.LoggerFactory;
 import com.github.movins.tars.core.support.stat.InvokeStatHelper;
-import org.slf4j.Logger;
+import com.github.movins.tars.api.client.ServantProxy;
+import com.github.movins.tars.api.client.ServantProxyConfig;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.util.Random;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 public final class ObjectProxy<T> implements ServantProxy, InvocationHandler {
     private static final Logger logger = LoggerFactory.getClientLogger();
@@ -100,10 +102,10 @@ public final class ObjectProxy<T> implements ServantProxy, InvocationHandler {
             return invoker.invoke(context);
         } catch (Throwable e) {
             e.printStackTrace();
-            if (logger.isDebugEnabled()) {
-                logger.debug(servantProxyConfig.getSimpleObjectName() + " error occurred on invoke|"
-                        + e.getLocalizedMessage(), e);
-            }
+//            if (logger.isDebugEnabled()) {
+//                logger.debug(servantProxyConfig.getSimpleObjectName() + " error occurred on invoke|"
+//                        + e.getLocalizedMessage(), e);
+//            }
             if (e instanceof NoInvokerException) {
                 throw new NoConnectionException(servantProxyConfig.getSimpleObjectName(), e.getLocalizedMessage(), e);
             }
@@ -199,12 +201,12 @@ public final class ObjectProxy<T> implements ServantProxy, InvocationHandler {
                     servantProxyConfig.setObjectName(nodes);
                     refresh();
                 }
-                logger.debug("{} sync server|{}", servantProxyConfig.getSimpleObjectName(), nodes);
+//                logger.debug("{} sync server|{}", servantProxyConfig.getSimpleObjectName(), nodes);
             } catch (Throwable e) {
-                logger.error(servantProxyConfig.getSimpleObjectName() + " error sync server", e);
+//                logger.error(servantProxyConfig.getSimpleObjectName() + " error sync server", e);
             } finally {
-                logger.info("ServantNodeRefresher run({}), use: {}", servantProxyConfig.getSimpleObjectName(),
-                        (System.currentTimeMillis() - begin));
+//                logger.info("ServantNodeRefresher run({}), use: {}", servantProxyConfig.getSimpleObjectName(),
+//                        (System.currentTimeMillis() - begin));
             }
         }
     }
@@ -217,9 +219,9 @@ public final class ObjectProxy<T> implements ServantProxy, InvocationHandler {
                 communicator.getStatHelper().report(
                         InvokeStatHelper.getInstance().getProxyStat(servantProxyConfig.getSimpleObjectName()), true);
             } catch (Exception e) {
-                logger.error("report stat worker error|" + servantProxyConfig.getSimpleObjectName(), e);
+//                logger.error("report stat worker error|" + servantProxyConfig.getSimpleObjectName(), e);
             } finally {
-                logger.info("ServantStatReproter run(), use: " + (System.currentTimeMillis() - begin));
+//                logger.info("ServantStatReproter run(), use: " + (System.currentTimeMillis() - begin));
             }
         }
     }

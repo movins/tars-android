@@ -18,23 +18,23 @@ package com.github.movins.tars.core.client.rpc.loadbalance;
 
 
 import com.github.movins.tars.api.client.ServantProxyConfig;
-import com.github.movins.tars.core.client.cluster.ServantInvokerAliveChecker;
-import com.github.movins.tars.core.client.cluster.ServantInvokerAliveStat;
-import com.github.movins.tars.core.client.rpc.InvokerComparator;
 import com.github.movins.tars.api.common.util.CollectionUtils;
 import com.github.movins.tars.api.common.util.Constants;
 import com.github.movins.tars.api.common.util.StringUtils;
+import com.github.movins.tars.api.support.log.LoggerFactory;
+import com.github.movins.tars.core.client.cluster.ServantInvokerAliveChecker;
+import com.github.movins.tars.core.client.cluster.ServantInvokerAliveStat;
+import com.github.movins.tars.core.client.rpc.InvokerComparator;
 import com.github.movins.tars.core.rpc.common.InvokeContext;
 import com.github.movins.tars.core.rpc.common.Invoker;
 import com.github.movins.tars.core.rpc.common.LoadBalance;
 import com.github.movins.tars.core.rpc.common.exc.NoInvokerException;
-import com.github.movins.tars.api.support.log.LoggerFactory;
-import org.slf4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * hash  Load balancing strategy
@@ -100,7 +100,7 @@ public class HashLoadBalance<T> implements LoadBalance<T> {
 
     @Override
     public void refresh(Collection<Invoker<T>> invokers) {
-        logger.info("{} try to refresh RoundRobinLoadBalance's invoker cache, size= {} ", config.getSimpleObjectName(), CollectionUtils.isEmpty(invokers) ? 0 : invokers.size());
+//        logger.info("{} try to refresh RoundRobinLoadBalance's invoker cache, size= {} ", config.getSimpleObjectName(), CollectionUtils.isEmpty(invokers) ? 0 : invokers.size());
         if (invokers == null || invokers.isEmpty()) {
             sortedInvokersCache = null;
             staticWeightInvokersCache = null;

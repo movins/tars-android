@@ -16,6 +16,7 @@
 
 package com.github.movins.tars.core.client;
 
+import com.github.movins.tars.api.client.CommunicatorConfig;
 import com.github.movins.tars.core.client.rpc.loadbalance.DefaultLoadBalance;
 import com.github.movins.tars.core.client.rpc.tars.TarsProtocolInvoker;
 import com.github.movins.tars.core.client.support.ServantCacheManager;
@@ -31,13 +32,13 @@ import com.github.movins.tars.core.rpc.exc.CommunicatorConfigException;
 import com.github.movins.tars.api.rpc.protocol.Codec;
 import com.github.movins.tars.core.rpc.protocol.tars.TarsClientCodec;
 import com.github.movins.tars.api.support.log.LoggerFactory;
-import org.slf4j.Logger;
+import com.github.movins.tars.api.client.ServantProxyConfig;
 
 import java.lang.reflect.Constructor;
+import java.util.logging.Logger;
 
 class ObjectProxyFactory {
     private static final Logger logger = LoggerFactory.getClientLogger();
-
 
     private final Communicator communicator;
 
@@ -154,7 +155,7 @@ class ObjectProxyFactory {
             } catch (CommunicatorConfigException e) {
                 /** If it fails, pull it from the local cache  file */
                 endpoints = ServantCacheManager.getInstance().get(communicator.getId(), cfg.getSimpleObjectName(), communicatorConfig.getDataPath());
-                logger.error(cfg.getSimpleObjectName() + " error occurred on get by registry, use by local cache=" + endpoints + "|" + e.getLocalizedMessage(), e);
+//                logger.error(cfg.getSimpleObjectName() + " error occurred on get by registry, use by local cache=" + endpoints + "|" + e.getLocalizedMessage(), e);
             }
 
             if (StringUtils.isEmpty(endpoints)) {

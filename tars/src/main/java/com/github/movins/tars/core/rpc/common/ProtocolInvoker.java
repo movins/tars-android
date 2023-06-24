@@ -16,6 +16,8 @@
 
 package com.github.movins.tars.core.rpc.common;
 
+import com.github.movins.tars.api.rpc.common.Url;
+
 import java.lang.reflect.Method;
 import java.util.Collection;
 

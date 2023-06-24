@@ -17,11 +17,10 @@
 package com.github.movins.tars.core.client.rpc.loadbalance;
 
 import com.github.movins.tars.api.client.ServantProxyConfig;
-import com.github.movins.tars.core.client.util.Pair;
 import com.github.movins.tars.api.common.util.Constants;
-import com.github.movins.tars.core.rpc.common.Invoker;
 import com.github.movins.tars.api.support.log.LoggerFactory;
-import org.slf4j.Logger;
+import com.github.movins.tars.core.client.util.Pair;
+import com.github.movins.tars.core.rpc.common.Invoker;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -35,6 +34,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import java.util.logging.Logger;
 
 public class LoadBalanceHelper {
 
@@ -54,9 +54,9 @@ public class LoadBalanceHelper {
             return null;
         }
 
-        if (logger.isDebugEnabled()) {
-            logger.debug("[buildStaticWeightList]: weightInvokers size: " + weightInvokers.size());
-        }
+//        if (logger.isDebugEnabled()) {
+//            logger.debug("[buildStaticWeightList]: weightInvokers size: " + weightInvokers.size());
+//        }
 
         int minWeight = Integer.MAX_VALUE;
         int maxWeight = Integer.MIN_VALUE;
@@ -84,9 +84,9 @@ public class LoadBalanceHelper {
             totalWeight += weight;
             weightToInvoker.add(new Pair<Integer, Invoker<T>>(weight, invoker));
             invokerToWeight.put(invoker, weight);
-            if (logger.isDebugEnabled()) {
-                logger.debug("[buildStaticWeightList]: invoker: " + invoker.hashCode() + ", weight: " + weight + ", host: " + invoker.getUrl().getHost() + ", port: " + invoker.getUrl().getPort());
-            }
+//            if (logger.isDebugEnabled()) {
+//                logger.debug("[buildStaticWeightList]: invoker: " + invoker.hashCode() + ", weight: " + weight + ", host: " + invoker.getUrl().getHost() + ", port: " + invoker.getUrl().getPort());
+//            }
         }
 
         List<Invoker<T>> result = new ArrayList<Invoker<T>>();
@@ -161,7 +161,7 @@ public class LoadBalanceHelper {
 //                logger.debug(sb.toString());
 //            }
         } catch (Exception e) {
-            logger.error("build consistent hash circle err. ", e);
+//            logger.error("build consistent hash circle err. ", e);
             return null;
         }
         return result;

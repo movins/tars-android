@@ -16,7 +16,6 @@
 
 package com.github.movins.tars.api.protocol.tars;
 
-import com.github.movins.tars.api.common.util.BeanAccessor;
 import com.github.movins.tars.api.common.util.CollectionUtils;
 import com.github.movins.tars.api.common.util.CommonUtils;
 import com.github.movins.tars.api.protocol.tars.TarsInputStream.HeadData;
@@ -50,7 +49,7 @@ public class TarsInputStreamExt {
             if (CollectionUtils.isNotEmpty(list)) {
                 for (TarsStrutPropertyInfo propertyInfo : list) {
                     Object value = jis.read(propertyInfo.getStamp(), propertyInfo.getOrder(), propertyInfo.isRequire());
-                    BeanAccessor.setBeanValue(result, propertyInfo.getName(), value);
+//                    BeanAccessor.setBeanValue(result, propertyInfo.getName(), value);
                 }
             }
             jis.skipToStructEnd();

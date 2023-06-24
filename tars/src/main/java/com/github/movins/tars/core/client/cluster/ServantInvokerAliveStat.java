@@ -19,11 +19,11 @@ package com.github.movins.tars.core.client.cluster;
 import com.github.movins.tars.api.client.ServantProxyConfig;
 import com.github.movins.tars.api.common.util.Constants;
 import com.github.movins.tars.api.support.log.LoggerFactory;
-import org.slf4j.Logger;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.logging.Logger;
 
 public class ServantInvokerAliveStat {
     private static final Logger logger = LoggerFactory.getClientLogger();
@@ -101,7 +101,7 @@ public class ServantInvokerAliveStat {
                 if (frequencyFailInvoke >= config.getFrequenceFailInvoke() && (frequencyFailInvoke_startTime + 5000) > System.currentTimeMillis()) {
                     alive = false;
                     lastRetryTime = System.currentTimeMillis();
-                    logger.info("{}|alive=false|frequenceFailInvoke={}|{}", identity, frequencyFailInvoke, toString());
+//                    logger.info("{}|alive=false|frequenceFailInvoke={}|{}", identity, frequencyFailInvoke, toString());
                 }
             }
 
@@ -109,7 +109,7 @@ public class ServantInvokerAliveStat {
                 if (netConnectTimeout) {
                     alive = false;
                     lastRetryTime = System.currentTimeMillis();
-                    logger.info("{}|alive=false|netConnectTimeout|{}", identity, toString());
+//                    logger.info("{}|alive=false|netConnectTimeout|{}", identity, toString());
                 }
             }
         } else {

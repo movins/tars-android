@@ -16,8 +16,10 @@
 
 package com.github.movins.tars.core.client;
 
+import com.github.movins.tars.api.client.ServantProxy;
 import com.github.movins.tars.core.rpc.common.LoadBalance;
 import com.github.movins.tars.core.rpc.common.ProtocolInvoker;
+import com.github.movins.tars.api.client.ServantProxyConfig;
 
 import java.lang.reflect.Proxy;
 import java.util.Iterator;
