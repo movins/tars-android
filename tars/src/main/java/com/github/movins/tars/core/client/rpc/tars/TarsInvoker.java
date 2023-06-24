@@ -38,7 +38,6 @@ import com.github.movins.tars.api.rpc.common.Url;
 import com.github.movins.tars.core.rpc.exc.NotConnectedException;
 import com.github.movins.tars.core.rpc.exc.ServerException;
 import com.github.movins.tars.api.rpc.exc.TarsException;
-import com.github.movins.tars.core.rpc.exc.TimeoutException;
 import com.github.movins.tars.api.rpc.protocol.tars.TarsServantRequest;
 import com.github.movins.tars.api.rpc.protocol.tars.support.AnalystManager;
 import com.github.movins.tars.core.server.core.AppContextManager;
@@ -50,6 +49,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class TarsInvoker<T> extends ServantInvoker<T> {
 

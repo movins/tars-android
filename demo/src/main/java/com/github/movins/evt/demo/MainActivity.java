@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         Communicator communicator = CommunicatorFactory.getInstance().getCommunicator(cfg);
         //warn If the deployment is started on the tars, you can only use the following constructor to get the communicator
         //Communicator communicator = CommunicatorFactory.getInstance().getCommunicator();
-        HelloPrx proxy = communicator.stringToProxy(HelloPrx.class, "TestApp.HelloServer.HelloObj@tcp -h 127.0.0.1 -p 18601 -t 60000");
+        HelloPrx proxy = communicator.stringToProxy(HelloPrx.class, "TestApp.HelloServer.HelloObj@tcp -h 121.37.4.223 -p 8361 -t 60000");
         //Synchronous call
         String ret = proxy.hello(1000, "Hello World");
         System.out.println(ret);
