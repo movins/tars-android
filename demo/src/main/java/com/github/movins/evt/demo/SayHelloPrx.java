@@ -26,11 +26,11 @@ import com.github.movins.tars.api.protocol.annotation.Servant;
 import java.util.concurrent.CompletableFuture;
 
 @Servant
-public interface HelloPrx {
+public interface SayHelloPrx {
 
-    public String hello(int no, String name);
+    public String EchoHello(String name, String greeting);
 
-    CompletableFuture<String> promise_hello(int no, String name);
+    CompletableFuture<String> promise_EchoHello(int no, String name);
 
-    public String hello(int no, String name, @TarsContext java.util.Map<String, String> ctx);
+    public String EchoHello(int no, String name, @TarsContext java.util.Map<String, String> ctx);
 }
